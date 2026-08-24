@@ -13,5 +13,13 @@ const firebaseConfig = {
 
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 export const auth = getAuth(app);
+
 export const googleProvider = new GoogleAuthProvider();
+// Set custom parameters if Web Client ID is configured
+if (process.env.NEXT_PUBLIC_FIREBASE_WEB_CLIENT_ID) {
+  googleProvider.setCustomParameters({
+    client_id: process.env.NEXT_PUBLIC_FIREBASE_WEB_CLIENT_ID
+  });
+}
+
 export const db = getFirestore(app);

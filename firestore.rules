@@ -1,0 +1,58 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && request.auth.token.email == 'apprustic@gmail.com';
+    }
+
+    // 1. Products collection
+    match /products/{productId} {
+      // Siapa saja (publik) bisa membaca katalog produk
+      allow read: if true;
+      // Hanya admin yang bisa membuat, mengedit, atau menghapus produk
+      allow write: if isAdmin();
+    }
+
+    // 2. Users collection
+    match /users/{userId} {
+      // User bisa membaca & mengubah profilnya sendiri, admin bisa membaca semua profil
+      allow read: if isOwner(userId) || isAdmin();
+      allow write: if isOwner(userId) || isAdmin();
+    }
+
+    // 3. Orders collection
+    match /orders/{orderId} {
+      // Client hanya bisa membaca order miliknya sendiri, admin bisa membaca seluruh order
+      allow read: if isSignedIn() && (request.auth.uid == resource.data.userId || isAdmin());
+      
+      // User login bisa membuat order pending baru (userId harus sesuai UID login)
+      allow create: if isSignedIn() && request.auth.uid == request.resource.data.userId;
+      
+      // User bisa menghapus order pending miliknya sendiri (aturan penggantian order pending ganda)
+      allow delete: if isSignedIn() && request.auth.uid == resource.data.userId;
+      
+      // Update order hanya bisa dilakukan oleh admin (perubahan status & webhook) atau pembatalan order pending oleh user
+      allow update: if isAdmin() || (isOwner(resource.data.userId) && resource.data.status == 'pending');
+    }
+
+    // 4. Payments & Unmatched Payments collection (Khusus Admin & Webhook SDK)
+    match /payments/{paymentId} {
+      allow read, write: if isAdmin();
+    }
+
+    match /unmatched_payments/{paymentId} {
+      allow read, write: if isAdmin();
+    }
+  }
+}

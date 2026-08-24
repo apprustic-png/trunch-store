@@ -2,9 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Product } from '@/types';
-import { Sparkles, ArrowRight, Tag } from 'lucide-react';
+import { ArrowRight, Tag, Truck } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
@@ -24,61 +23,62 @@ export default function ProductCard({ product }: ProductCardProps) {
   }).format(product.originalPrice);
 
   return (
-    <Link
-      href={`/product/${product.id}`}
-      className="group relative bg-noir-800/80 rounded-2xl overflow-hidden border border-zinc-800 hover:border-amber-500/50 transition-all duration-300 flex flex-col hover:shadow-2xl hover:shadow-brand-600/10 transform hover:-translate-y-1"
-    >
-      {/* Discount Badge */}
-      {product.discountPercent > 0 && (
-        <div className="absolute top-4 left-4 z-20 bg-gradient-to-r from-brand-600 to-rose-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
-          <Tag className="w-3 h-3" />
-          <span>Diskon {product.discountPercent}%</span>
-        </div>
-      )}
-
-      {/* Image Gallery Thumbnail */}
-      <div className="relative aspect-[3/4] w-full overflow-hidden bg-zinc-900">
+    <Link href={`/product/${product.id}`} className="card-product group flex flex-col overflow-hidden">
+      {/* Image Container */}
+      <div className="relative aspect-[3/4] w-full overflow-hidden" style={{ background: '#f9f3ec' }}>
         <img
           src={product.images[0]}
           alt={product.name}
-          className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700 ease-out"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-noir-900 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
-      </div>
 
-      {/* Product Content */}
-      <div className="p-6 flex-1 flex flex-col justify-between">
-        <div>
-          <span className="text-[11px] font-semibold tracking-wider text-amber-400 uppercase">
-            {product.category}
-          </span>
-          <h3 className="font-serif text-lg font-bold text-zinc-100 mt-1 group-hover:text-amber-300 transition-colors line-clamp-1">
-            {product.name}
-          </h3>
-          <p className="text-xs text-zinc-400 mt-2 line-clamp-2 leading-relaxed">
-            {product.description}
-          </p>
-        </div>
+        {/* Gradient Overlay on hover */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: 'linear-gradient(to top, rgba(45,37,32,0.25) 0%, transparent 60%)' }} />
 
-        <div className="mt-6 pt-4 border-t border-zinc-800 flex items-center justify-between">
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="font-serif text-lg font-bold text-amber-300">
-                {formattedPrice}
-              </span>
-              {product.discountPercent > 0 && (
-                <span className="text-xs text-zinc-500 line-through">
-                  {formattedOriginalPrice}
-                </span>
-              )}
-            </div>
-            <span className="text-[10px] text-emerald-400 font-medium block mt-0.5">
-              ✓ Gratis Ongkir Seluruh Indonesia
+        {/* Discount Badge */}
+        {product.discountPercent > 0 && (
+          <div className="absolute top-3 left-3">
+            <span className="badge-discount flex items-center gap-1">
+              <Tag className="w-2.5 h-2.5" />
+              {product.discountPercent}% OFF
             </span>
           </div>
+        )}
 
-          <div className="w-9 h-9 rounded-full bg-zinc-800 group-hover:bg-amber-400 group-hover:text-zinc-950 text-zinc-300 flex items-center justify-center transition-colors">
-            <ArrowRight className="w-4 h-4" />
+        {/* Arrow on hover */}
+        <div className="absolute bottom-3 right-3 w-10 h-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0"
+          style={{ background: 'white', color: '#c45573' }}>
+          <ArrowRight className="w-4 h-4" />
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="p-5 flex-1 flex flex-col">
+        <p className="text-[11px] font-semibold tracking-widest uppercase mb-1" style={{ color: '#d4a853' }}>
+          {product.category}
+        </p>
+        <h3 className="font-serif text-lg font-semibold leading-snug mb-3 group-hover:text-rose-600 transition-colors" style={{ color: '#2d2520' }}>
+          {product.name}
+        </h3>
+        <p className="text-xs leading-relaxed mb-4 line-clamp-2" style={{ color: '#8a7468' }}>
+          {product.description}
+        </p>
+
+        {/* Price */}
+        <div className="mt-auto pt-4 border-t" style={{ borderColor: '#f2e8d9' }}>
+          <div className="flex items-baseline gap-2 mb-1.5">
+            <span className="font-serif text-xl font-bold" style={{ color: '#c45573' }}>
+              {formattedPrice}
+            </span>
+            {product.discountPercent > 0 && (
+              <span className="text-xs line-through" style={{ color: '#c4a99a' }}>
+                {formattedOriginalPrice}
+              </span>
+            )}
+          </div>
+          <div className="flex items-center gap-1 text-xs font-medium" style={{ color: '#4caf84' }}>
+            <Truck className="w-3 h-3" />
+            <span>Gratis Ongkir Seluruh Indonesia</span>
           </div>
         </div>
       </div>

@@ -25,9 +25,11 @@ export const SEED_PRODUCTS: Omit<Product, 'id' | 'createdAt'>[] = [
     checkoutUrl: 'http://lynk.id/trunch/d74kovdx5kjv/checkout',
     lynkProductUuid: '6a8c1175728c54d9d6ded0ea-7594-8071039800-1787564405741',
     images: [
-      '/Petal Whispers (Bisikan Kelopak)/Petal Whispers (Bisikan Kelopak) 1.jpg',
-      '/Petal Whispers (Bisikan Kelopak)/Petal Whispers (Bisikan Kelopak) 2.jpg',
-      '/Petal Whispers (Bisikan Kelopak)/Petal Whispers (Bisikan Kelopak) 3.jpg'
+      '/images/petal-whispers/1.jpg',
+      '/images/petal-whispers/2.webp',
+      '/images/petal-whispers/3.webp',
+      '/images/petal-whispers/4.webp',
+      '/images/petal-whispers/5.webp',
     ],
     isActive: true
   },
@@ -55,8 +57,10 @@ export const SEED_PRODUCTS: Omit<Product, 'id' | 'createdAt'>[] = [
     checkoutUrl: 'http://lynk.id/trunch/436d92xj63yo/checkout',
     lynkProductUuid: '6a8c11af95254ad0e9e7a8d6-6583-3369918954-1787564463377',
     images: [
-      '/Lavender Fly/Lavender Fly 1.jpg',
-      '/Lavender Fly/Lavender Fly 2.jpg'
+      '/images/lavender-fly/1.jpg',
+      '/images/lavender-fly/2.webp',
+      '/images/lavender-fly/3.webp',
+      '/images/lavender-fly/4.webp',
     ],
     isActive: true
   },
@@ -84,8 +88,11 @@ export const SEED_PRODUCTS: Omit<Product, 'id' | 'createdAt'>[] = [
     checkoutUrl: 'http://lynk.id/trunch/r5rkp06k4gel/checkout',
     lynkProductUuid: '6a8c13e13e22d48038329b98-2099-3657524020-1787565025953',
     images: [
-      '/Oriental Raven/Oriental Raven 1.jpg',
-      '/Oriental Raven/Oriental Raven 2.jpg'
+      '/images/oriental-raven/1.jpg',
+      '/images/oriental-raven/2.webp',
+      '/images/oriental-raven/3.webp',
+      '/images/oriental-raven/4.webp',
+      '/images/oriental-raven/5.webp',
     ],
     isActive: true
   },
@@ -113,8 +120,11 @@ export const SEED_PRODUCTS: Omit<Product, 'id' | 'createdAt'>[] = [
     checkoutUrl: 'http://lynk.id/trunch/v5gw2yny298g/checkout',
     lynkProductUuid: '6a8c13eae4f30576c3a6430f-7588-3358666915-1787565034381',
     images: [
-      '/Academy Chic/Academy Chic 1.jpg',
-      '/Academy Chic/Academy Chic 2.jpg'
+      '/images/academy-chic/1.jpg',
+      '/images/academy-chic/2.webp',
+      '/images/academy-chic/3.webp',
+      '/images/academy-chic/4.webp',
+      '/images/academy-chic/5.webp',
     ],
     isActive: true
   },
@@ -142,8 +152,9 @@ export const SEED_PRODUCTS: Omit<Product, 'id' | 'createdAt'>[] = [
     checkoutUrl: 'http://lynk.id/trunch/6qy02v1wyk71/checkout',
     lynkProductUuid: '6a8c13ed999dbaa856f45ac4-1578-4774914847-1787565037987',
     images: [
-      '/Coffee Muse/Coffee Muse 1.jpg',
-      '/Coffee Muse/Coffee Muse 2.jpg'
+      '/images/coffee-muse/1.webp',
+      '/images/coffee-muse/2.webp',
+      '/images/coffee-muse/3.webp',
     ],
     isActive: true
   },
@@ -171,8 +182,9 @@ export const SEED_PRODUCTS: Omit<Product, 'id' | 'createdAt'>[] = [
     checkoutUrl: 'http://lynk.id/trunch/213v6mvdvyq4/checkout',
     lynkProductUuid: '6a8c13f6eb73fc5298f2441a-1153-6101962369-1787565046633',
     images: [
-      '/Midnight Lace/Midnight Lace 1.jpg',
-      '/Midnight Lace/Midnight Lace 2.jpg'
+      '/images/midnight-lace/1.jpg',
+      '/images/midnight-lace/2.webp',
+      '/images/midnight-lace/3.webp',
     ],
     isActive: true
   },
@@ -200,8 +212,9 @@ export const SEED_PRODUCTS: Omit<Product, 'id' | 'createdAt'>[] = [
     checkoutUrl: 'http://lynk.id/trunch/matcha-meadow/checkout',
     lynkProductUuid: '6a8c1400matcha-meadow-uuid-178756505000',
     images: [
-      '/Matcha Meadow/Matcha Meadow 1.jpg',
-      '/Matcha Meadow/Matcha Meadow 2.jpg'
+      '/images/matcha-meadow/1.webp',
+      '/images/matcha-meadow/2.webp',
+      '/images/matcha-meadow/3.webp',
     ],
     isActive: true
   },
@@ -229,8 +242,8 @@ export const SEED_PRODUCTS: Omit<Product, 'id' | 'createdAt'>[] = [
     checkoutUrl: 'http://lynk.id/trunch/noir-elegance/checkout',
     lynkProductUuid: '6a8c1405noir-elegance-uuid-178756506000',
     images: [
-      '/Noir Elegance/Noir Elegance 1.jpg',
-      '/Noir Elegance/Noir Elegance 2.jpg'
+      '/images/noir-elegance/1.webp',
+      '/images/noir-elegance/2.webp',
     ],
     isActive: true
   },
@@ -258,8 +271,9 @@ export const SEED_PRODUCTS: Omit<Product, 'id' | 'createdAt'>[] = [
     checkoutUrl: 'http://lynk.id/trunch/velvet-rouge/checkout',
     lynkProductUuid: '6a8c1410velvet-rouge-uuid-178756507000',
     images: [
-      '/Velvet Rouge/Velvet Rouge 1.jpg',
-      '/Velvet Rouge/Velvet Rouge 2.jpg'
+      '/images/velvet-rouge/1.jpg',
+      '/images/velvet-rouge/2.webp',
+      '/images/velvet-rouge/3.webp',
     ],
     isActive: true
   }

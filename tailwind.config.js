@@ -7,26 +7,40 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        serif: ['Playfair Display', 'Georgia', 'serif'],
+      },
       colors: {
-        brand: {
-          50: '#fdf4f5',
-          100: '#fbe8eb',
-          200: '#f7d5da',
-          500: '#e11d48',
-          600: '#be123c',
-          900: '#4c0519',
+        cream: {
+          50: '#fdfaf7',
+          100: '#f9f3ec',
+          200: '#f2e8d9',
+          300: '#e8d5bc',
+        },
+        rose: {
+          blush: '#f4b8c8',
+          soft: '#f9d0d9',
+          medium: '#e8839a',
+          deep: '#c45573',
+          darker: '#9b3556',
         },
         gold: {
-          400: '#fbbf24',
-          500: '#f59e0b',
-          600: '#d97706',
+          light: '#f5e6c8',
+          medium: '#d4a853',
+          rich: '#b8860b',
         },
-        noir: {
-          900: '#0f0f11',
-          800: '#18181b',
-          700: '#27272a',
-        }
+        charcoal: {
+          soft: '#6b5b52',
+          medium: '#4a3f38',
+          dark: '#2d2520',
+        },
       },
+      boxShadow: {
+        'soft': '0 4px 20px rgba(180, 120, 100, 0.08)',
+        'warm': '0 8px 40px rgba(180, 120, 100, 0.15)',
+        'product': '0 12px 48px rgba(180, 100, 80, 0.12)',
+      }
     },
   },
   plugins: [],

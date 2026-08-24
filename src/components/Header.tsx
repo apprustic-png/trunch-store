@@ -3,55 +3,71 @@
 import React from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
-import { ShoppingBag, User as UserIcon, LogOut, ShieldCheck } from 'lucide-react';
+import { User as UserIcon, LogOut, ShieldCheck, Menu, Sparkles } from 'lucide-react';
 
 export default function Header() {
   const { user, activeOrdersCount, signInWithGoogle, signOut } = useAuth();
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-md bg-noir-900/90 border-b border-zinc-800 text-zinc-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-rose-50" style={{ boxShadow: '0 2px 20px rgba(196, 85, 115, 0.06)' }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between py-4">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-600 via-rose-500 to-amber-400 p-0.5 shadow-lg group-hover:scale-105 transition-transform duration-300">
-            <div className="w-full h-full bg-noir-900 rounded-full flex items-center justify-center">
-              <span className="font-serif text-lg font-bold text-amber-300">T</span>
-            </div>
+          <div className="relative w-10 h-10 flex items-center justify-center">
+            <div className="absolute inset-0 rounded-full" style={{ background: 'linear-gradient(135deg, #c45573, #d4a853)' }} />
+            <span className="relative font-serif text-xl font-bold text-white z-10">T</span>
           </div>
           <div>
-            <span className="font-serif text-2xl font-bold tracking-wider bg-gradient-to-r from-zinc-100 via-amber-100 to-zinc-300 bg-clip-text text-transparent">
-              TRUNCH
-            </span>
-            <span className="block text-[10px] tracking-[0.25em] text-zinc-400 uppercase font-sans">
+            <div className="flex items-baseline gap-1.5">
+              <span className="font-serif text-2xl font-bold tracking-wider" style={{ color: '#2d2520' }}>
+                TRUNCH
+              </span>
+              <span className="font-serif text-2xl font-light tracking-widest" style={{ color: '#c45573' }}>
+                STORE
+              </span>
+            </div>
+            <p className="text-[10px] font-sans tracking-[0.3em] uppercase" style={{ color: '#b8a09a' }}>
               HAUTE COUTURE
-            </span>
+            </p>
           </div>
         </Link>
 
         {/* Right Navigation */}
-        <div className="flex items-center gap-4">
+        <nav className="flex items-center gap-3">
           {user ? (
-            <div className="flex items-center gap-3">
-              {/* Client Button with Processing Badge */}
+            <div className="flex items-center gap-2">
+              {/* Client Button with Badge */}
               <Link
                 href="/client"
-                className="relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-zinc-800/80 hover:bg-zinc-700/80 border border-zinc-700 text-sm font-medium transition-all shadow-sm hover:shadow-brand-500/10"
+                className="relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all"
+                style={{
+                  background: '#fdf3f6',
+                  border: '1.5px solid #f4b8c8',
+                  color: '#c45573',
+                }}
               >
-                <UserIcon className="w-4 h-4 text-amber-400" />
-                <span>Client</span>
-
+                <UserIcon className="w-4 h-4" />
+                <span>Area Saya</span>
                 {activeOrdersCount > 0 && (
-                  <span className="ml-1 inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 text-xs font-bold text-white bg-gradient-to-r from-brand-600 to-rose-500 rounded-full shadow-md animate-pulse">
+                  <span
+                    className="absolute -top-1.5 -right-1.5 min-w-[20px] h-5 px-1.5 text-[11px] font-bold text-white rounded-full flex items-center justify-center shadow-md"
+                    style={{ background: 'linear-gradient(135deg, #c45573, #e8839a)' }}
+                  >
                     {activeOrdersCount}
                   </span>
                 )}
               </Link>
 
-              {/* Admin shortcut if logged in as admin */}
+              {/* Admin Link */}
               {user.email === 'apprustic@gmail.com' && (
                 <Link
                   href="/admin"
-                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 hover:bg-amber-500/20 text-xs font-semibold transition"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-semibold transition"
+                  style={{
+                    background: '#fff8ec',
+                    border: '1.5px solid #d4a853',
+                    color: '#b8860b',
+                  }}
                   title="Admin Dashboard"
                 >
                   <ShieldCheck className="w-3.5 h-3.5" />
@@ -61,7 +77,10 @@ export default function Header() {
 
               <button
                 onClick={signOut}
-                className="p-2 text-zinc-400 hover:text-zinc-200 transition rounded-full hover:bg-zinc-800"
+                className="p-2.5 rounded-full transition"
+                style={{ color: '#b8a09a' }}
+                onMouseOver={e => (e.currentTarget.style.background = '#fdf3f6')}
+                onMouseOut={e => (e.currentTarget.style.background = 'transparent')}
                 title="Sign Out"
               >
                 <LogOut className="w-4 h-4" />
@@ -70,12 +89,13 @@ export default function Header() {
           ) : (
             <button
               onClick={signInWithGoogle}
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-amber-400 via-rose-500 to-brand-600 text-white text-sm font-semibold shadow-lg hover:brightness-110 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+              className="btn-primary"
             >
+              <Sparkles className="w-4 h-4" />
               <span>Login</span>
             </button>
           )}
-        </div>
+        </nav>
       </div>
     </header>
   );
